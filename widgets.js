@@ -13,3 +13,10 @@ const widgets = [
     folder: "calendar",
     description: "Monthly Calendar"
 }
+
+    {
+    name: "Weather",
+    icon: "🌤️",
+    folder: "weather",
+    description: "Weather Widget"
+}

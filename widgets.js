@@ -12,7 +12,7 @@ const widgets = [
     icon: "📅",
     folder: "calendar",
     description: "Monthly Calendar"
-}
+},
 
     {
     name: "Weather",

@@ -6,12 +6,10 @@ const widgets = [
         folder: "clock",
         description: "Digital Clock"
     },
-
-    {
-        name: "Calendar",
-        icon: "📅",
-        folder: "calender",
-        description: "Monthly Calendar"
-    }
-
-];
+    
+{
+    name: "Calendar",
+    icon: "📅",
+    folder: "calendar",
+    description: "Monthly Calendar"
+}

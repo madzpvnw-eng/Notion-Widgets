@@ -2,189 +2,25 @@
 <html lang="en">
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Notion Widgets</title>
+    <title>Notion Widgets</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-body{
-
-background:#ffffff;
-
-font-family:Poppins,sans-serif;
-
-display:flex;
-
-justify-content:center;
-
-padding:60px 20px;
-
-}
-
-.container{
-
-width:100%;
-max-width:900px;
-
-}
-
-h1{
-
-font-size:48px;
-
-color:#703B3B;
-
-margin-bottom:10px;
-
-}
-
-.subtitle{
-
-color:#8a6c6c;
-
-margin-bottom:45px;
-
-font-size:18px;
-
-}
-
-.grid{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-
-gap:24px;
-
-}
-
-.card{
-
-background:#F5EDE9;
-
-padding:28px;
-
-border-radius:24px;
-
-text-decoration:none;
-
-color:#703B3B;
-
-transition:.25s;
-
-box-shadow:0 10px 25px rgba(0,0,0,.06);
-
-}
-
-.card:hover{
-
-transform:translateY(-6px);
-
-box-shadow:0 18px 40px rgba(0,0,0,.12);
-
-}
-
-.icon{
-
-font-size:42px;
-
-margin-bottom:15px;
-
-}
-
-.title{
-
-font-size:24px;
-
-font-weight:600;
-
-margin-bottom:8px;
-
-}
-
-.desc{
-
-color:#8a6c6c;
-
-font-size:15px;
-
-}
-
-.coming{
-
-margin-top:50px;
-
-text-align:center;
-
-color:#9b7d7d;
-
-}
-
-</style>
+    <link rel="stylesheet" href="style.css">
 
 </head>
-
 <body>
 
-<div class="container">
+    <div id="app"></div>
 
-<h1>Notion Widgets</h1>
-
-<p class="subtitle">
-Beautiful widgets made for Notion. :By zpvnw
-</p>
-
-<div class="grid">
-
-<a class="card" href="./clock/">
-
-<div class="icon">🕒</div>
-
-<div class="title">
-Clock
-</div>
-
-<div class="desc">
-Minimal digital clock.
-</div>
-
-</a>
-
-<a class="card" href="./calender/">
-
-<div class="icon">📅</div>
-
-<div class="title">
-Calendar
-</div>
-
-<div class="desc">
-Minimal monthly calendar.
-</div>
-
-</a>
-
-</div>
-
-<div class="coming">
-
-Weather • Pomodoro • Countdown • Quote
-
-</div>
-
-</div>
+    <script src="widgets.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>

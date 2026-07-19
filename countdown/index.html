@@ -10,136 +10,205 @@
 
     <title>Countdown | MadWidgets</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+          href="style.css">
 
 </head>
 
 <body>
 
-    <div class="container">
+    <main class="container">
 
-        <div class="card">
+        <section class="countdown-card">
 
-            <h1>COMING SOON</h1>
+            <h1 class="title">
+                COMING SOON
+            </h1>
 
-            <!-- Event Name -->
+            <!-- ==========================
+                 FORM
+            =========================== -->
 
-            <div class="input-group">
+            <div class="form">
 
-                <label>📝 Event Name</label>
+                <div class="input-group">
 
-                <input
-                    type="text"
-                    id="eventName"
-                    placeholder="My Birthday">
+                    <label for="eventName">
+                        📝 Event Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="eventName"
+                        placeholder="My Birthday">
+
+                </div>
+
+                <div class="row">
+
+                    <div class="input-group">
+
+                        <label for="targetDate">
+                            📅 Target Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="targetDate">
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <label for="targetTime">
+                            🕒 Target Time
+                        </label>
+
+                        <input
+                            type="time"
+                            id="targetTime">
+
+                    </div>
+
+                </div>
+
+                <button id="applyBtn">
+
+                    Apply Countdown
+
+                </button>
 
             </div>
 
-            <!-- Date -->
+            <!-- ==========================
+                 EVENT TITLE
+            =========================== -->
 
-            <div class="input-group">
-
-                <label>📅 Target Date</label>
-
-                <input
-                    type="date"
-                    id="targetDate">
-
-            </div>
-
-            <!-- Time -->
-
-            <div class="input-group">
-
-                <label>🕒 Target Time</label>
-
-                <input
-                    type="time"
-                    id="targetTime">
-
-            </div>
-
-            <!-- Button -->
-
-            <button id="applyBtn">
-
-                Apply Countdown
-
-            </button>
-
-            <!-- Event Title -->
-
-            <h2 id="eventTitle">
+            <h2
+                class="event-title"
+                id="eventTitle">
 
                 Event Name
 
             </h2>
 
-            <!-- Countdown -->
+            <!-- ==========================
+                 COUNTDOWN
+            =========================== -->
 
             <div class="countdown">
 
-                <div class="box">
+                <!-- Days -->
 
-                    <div
-                        class="number"
-                        id="days">
+                <div class="time-box">
 
-                        00
+                    <div class="flip-card">
+
+                        <span
+                            id="days"
+                            class="number">
+
+                            000
+
+                        </span>
 
                     </div>
 
-                    <span>Days</span>
+                    <span class="label">
+
+                        Days
+
+                    </span>
 
                 </div>
 
-                <div class="box">
+                <!-- Hours -->
 
-                    <div
-                        class="number"
-                        id="hours">
+                <div class="time-box">
 
-                        00
+                    <div class="flip-card">
+
+                        <span
+                            id="hours"
+                            class="number">
+
+                            00
+
+                        </span>
 
                     </div>
 
-                    <span>Hours</span>
+                    <span class="label">
+
+                        Hours
+
+                    </span>
 
                 </div>
 
-                <div class="box">
+                <!-- Minutes -->
 
-                    <div
-                        class="number"
-                        id="minutes">
+                <div class="time-box">
 
-                        00
+                    <div class="flip-card">
+
+                        <span
+                            id="minutes"
+                            class="number">
+
+                            00
+
+                        </span>
 
                     </div>
 
-                    <span>Minutes</span>
+                    <span class="label">
+
+                        Minutes
+
+                    </span>
 
                 </div>
 
-                <div class="box">
+                <!-- Seconds -->
 
-                    <div
-                        class="number"
-                        id="seconds">
+                <div class="time-box">
 
-                        00
+                    <div class="flip-card">
+
+                        <span
+                            id="seconds"
+                            class="number">
+
+                            00
+
+                        </span>
 
                     </div>
 
-                    <span>Seconds</span>
+                    <span class="label">
+
+                        Seconds
+
+                    </span>
 
                 </div>
 
             </div>
 
-        </div>
+            <!-- ==========================
+                 MESSAGE
+            =========================== -->
 
-    </div>
+            <p
+                id="message"
+                class="message">
+
+            </p>
+
+        </section>
+
+    </main>
 
     <script src="script.js"></script>
 

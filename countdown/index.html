@@ -5,36 +5,42 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Countdown | MadWidgets</title>
 
-    <link rel="stylesheet"
-          href="style.css">
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-    <main class="container">
+    <main class="countdown">
 
-        <section class="countdown-card">
+        <div class="card">
 
-            <h1 class="title">
-                COMING SOON
-            </h1>
+            <!-- =========================
+                 Header
+            ========================== -->
 
-            <!-- ==========================
-                 FORM
-            =========================== -->
+            <header>
 
-            <div class="form">
+                <h1>COMING SOON</h1>
 
-                <div class="input-group">
+            </header>
+
+            <!-- =========================
+                 Controls
+            ========================== -->
+
+            <section class="controls">
+
+                <div class="field">
 
                     <label for="eventName">
+
                         📝 Event Name
+
                     </label>
 
                     <input
@@ -44,31 +50,31 @@
 
                 </div>
 
-                <div class="row">
+                <div class="field">
 
-                    <div class="input-group">
+                    <label for="targetDate">
 
-                        <label for="targetDate">
-                            📅 Target Date
-                        </label>
+                        📅 Target Date
 
-                        <input
-                            type="date"
-                            id="targetDate">
+                    </label>
 
-                    </div>
+                    <input
+                        type="date"
+                        id="targetDate">
 
-                    <div class="input-group">
+                </div>
 
-                        <label for="targetTime">
-                            🕒 Target Time
-                        </label>
+                <div class="field">
 
-                        <input
-                            type="time"
-                            id="targetTime">
+                    <label for="targetTime">
 
-                    </div>
+                        🕒 Target Time
+
+                    </label>
+
+                    <input
+                        type="time"
+                        id="targetTime">
 
                 </div>
 
@@ -78,43 +84,49 @@
 
                 </button>
 
-            </div>
+            </section>
 
-            <!-- ==========================
-                 EVENT TITLE
-            =========================== -->
+            <!-- =========================
+                 Event Name
+            ========================== -->
 
-            <h2
-                class="event-title"
-                id="eventTitle">
+            <h2 id="eventTitle">
 
                 Event Name
 
             </h2>
 
-            <!-- ==========================
-                 COUNTDOWN
-            =========================== -->
+            <!-- =========================
+                 Countdown
+            ========================== -->
 
-            <div class="countdown">
+            <section class="countdown-box">
 
                 <!-- Days -->
 
-                <div class="time-box">
+                <div class="unit">
 
-                    <div class="flip-card">
+                    <div class="flip-card" id="days-card">
 
-                        <span
-                            id="days"
-                            class="number">
+                        <div class="top" id="days-top">
 
                             000
 
-                        </span>
+                        </div>
+
+                        <div class="bottom" id="days-bottom">
+
+                            000
+
+                        </div>
+
+                        <div class="top-flip"></div>
+
+                        <div class="bottom-flip"></div>
 
                     </div>
 
-                    <span class="label">
+                    <span>
 
                         Days
 
@@ -124,21 +136,29 @@
 
                 <!-- Hours -->
 
-                <div class="time-box">
+                <div class="unit">
 
-                    <div class="flip-card">
+                    <div class="flip-card" id="hours-card">
 
-                        <span
-                            id="hours"
-                            class="number">
+                        <div class="top" id="hours-top">
 
                             00
 
-                        </span>
+                        </div>
+
+                        <div class="bottom" id="hours-bottom">
+
+                            00
+
+                        </div>
+
+                        <div class="top-flip"></div>
+
+                        <div class="bottom-flip"></div>
 
                     </div>
 
-                    <span class="label">
+                    <span>
 
                         Hours
 
@@ -148,21 +168,29 @@
 
                 <!-- Minutes -->
 
-                <div class="time-box">
+                <div class="unit">
 
-                    <div class="flip-card">
+                    <div class="flip-card" id="minutes-card">
 
-                        <span
-                            id="minutes"
-                            class="number">
+                        <div class="top" id="minutes-top">
 
                             00
 
-                        </span>
+                        </div>
+
+                        <div class="bottom" id="minutes-bottom">
+
+                            00
+
+                        </div>
+
+                        <div class="top-flip"></div>
+
+                        <div class="bottom-flip"></div>
 
                     </div>
 
-                    <span class="label">
+                    <span>
 
                         Minutes
 
@@ -172,21 +200,29 @@
 
                 <!-- Seconds -->
 
-                <div class="time-box">
+                <div class="unit">
 
-                    <div class="flip-card">
+                    <div class="flip-card" id="seconds-card">
 
-                        <span
-                            id="seconds"
-                            class="number">
+                        <div class="top" id="seconds-top">
 
                             00
 
-                        </span>
+                        </div>
+
+                        <div class="bottom" id="seconds-bottom">
+
+                            00
+
+                        </div>
+
+                        <div class="top-flip"></div>
+
+                        <div class="bottom-flip"></div>
 
                     </div>
 
-                    <span class="label">
+                    <span>
 
                         Seconds
 
@@ -194,19 +230,15 @@
 
                 </div>
 
-            </div>
+            </section>
 
-            <!-- ==========================
-                 MESSAGE
-            =========================== -->
+            <!-- =========================
+                 Message
+            ========================== -->
 
-            <p
-                id="message"
-                class="message">
+            <p id="message"></p>
 
-            </p>
-
-        </section>
+        </div>
 
     </main>
 

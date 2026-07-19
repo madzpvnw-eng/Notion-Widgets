@@ -1,65 +1,136 @@
-const eventName = document.getElementById("eventName");
-const targetDate = document.getElementById("targetDate");
-const targetTime = document.getElementById("targetTime");
+// =========================================
+// Elements
+// =========================================
+
+const eventInput = document.getElementById("eventName");
+const dateInput = document.getElementById("targetDate");
+const timeInput = document.getElementById("targetTime");
 
 const applyBtn = document.getElementById("applyBtn");
 
 const eventTitle = document.getElementById("eventTitle");
+const message = document.getElementById("message");
 
 const days = document.getElementById("days");
 const hours = document.getElementById("hours");
 const minutes = document.getElementById("minutes");
 const seconds = document.getElementById("seconds");
 
-let countdown;
+// =========================================
+// Variables
+// =========================================
+
+let countdownInterval = null;
+let targetDate = null;
+
+// =========================================
+// Helpers
+// =========================================
+
+function pad(number) {
+    return String(number).padStart(2, "0");
+}
+
+function setCountdown(d, h, m, s) {
+
+    days.textContent = d;
+    hours.textContent = pad(h);
+    minutes.textContent = pad(m);
+    seconds.textContent = pad(s);
+
+}
+
+function stopCountdown() {
+
+    clearInterval(countdownInterval);
+    countdownInterval = null;
+
+}
+
+// =========================================
+// Update Countdown
+// =========================================
+
+function updateCountdown() {
+
+    const now = new Date();
+
+    const distance = targetDate - now;
+
+    if (distance <= 0) {
+
+        stopCountdown();
+
+        setCountdown("000", 0, 0, 0);
+
+        message.textContent = "🎉 Event Started!";
+
+        return;
+
+    }
+
+    const totalSeconds = Math.floor(distance / 1000);
+
+    const d = Math.floor(totalSeconds / 86400);
+
+    const h = Math.floor((totalSeconds % 86400) / 3600);
+
+    const m = Math.floor((totalSeconds % 3600) / 60);
+
+    const s = totalSeconds % 60;
+
+    setCountdown(d, h, m, s);
+
+}
+
+// =========================================
+// Apply Button
+// =========================================
 
 applyBtn.addEventListener("click", () => {
 
-    if (!targetDate.value || !targetTime.value) {
-        alert("Please select a date and time.");
-        return;
+    message.textContent = "";
+
+    if (eventInput.value.trim() === "") {
+
+        eventTitle.textContent = "Countdown";
+
+    } else {
+
+        eventTitle.textContent = eventInput.value;
+
     }
 
-    eventTitle.textContent = eventName.value || "Countdown";
+    if (!dateInput.value) {
 
-    const target = new Date(`${targetDate.value}T${targetTime.value}`);
+        message.textContent = "⚠️ Please choose a date.";
 
-    clearInterval(countdown);
+        return;
 
-    countdown = setInterval(() => {
+    }
 
-        const now = new Date();
+    if (!timeInput.value) {
 
-        const distance = target - now;
+        message.textContent = "⚠️ Please choose a time.";
 
-        if (distance <= 0) {
+        return;
 
-            clearInterval(countdown);
+    }
 
-            days.textContent = "00";
-            hours.textContent = "00";
-            minutes.textContent = "00";
-            seconds.textContent = "00";
+    targetDate = new Date(`${dateInput.value}T${timeInput.value}`);
 
-            eventTitle.textContent = "🎉 Event Started!";
+    if (targetDate <= new Date()) {
 
-            return;
+        message.textContent = "⚠️ Please select a future date and time.";
 
-        }
+        return;
 
-        const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+    }
 
-        const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    stopCountdown();
 
-        const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    updateCountdown();
 
-        const s = Math.floor((distance % (1000 * 60)) / 1000);
-
-        days.textContent = String(d).padStart(2, "0");
-        hours.textContent = String(h).padStart(2, "0");
-        minutes.textContent = String(m).padStart(2, "0");
-        seconds.textContent = String(s).padStart(2, "0");
-
-    }, 1000);
+    countdownInterval = setInterval(updateCountdown, 1000);
 
 });

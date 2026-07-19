@@ -33,59 +33,92 @@
                  Controls
             ========================== -->
 
-            <section class="controls">
+            <section class="countdown-box">
 
-                <div class="field">
+    <!-- Days -->
 
-                    <label for="eventName">
+    <div class="unit">
 
-                        📝 Event Name
+        <div class="flip-card" data-unit="days">
 
-                    </label>
+            <div class="top">000</div>
 
-                    <input
-                        type="text"
-                        id="eventName"
-                        placeholder="My Birthday">
+            <div class="bottom">000</div>
 
-                </div>
+            <div class="top-flip"></div>
 
-                <div class="field">
+            <div class="bottom-flip"></div>
 
-                    <label for="targetDate">
+        </div>
 
-                        📅 Target Date
+        <span>Days</span>
 
-                    </label>
+    </div>
 
-                    <input
-                        type="date"
-                        id="targetDate">
 
-                </div>
+    <!-- Hours -->
 
-                <div class="field">
+    <div class="unit">
 
-                    <label for="targetTime">
+        <div class="flip-card" data-unit="hours">
 
-                        🕒 Target Time
+            <div class="top">00</div>
 
-                    </label>
+            <div class="bottom">00</div>
 
-                    <input
-                        type="time"
-                        id="targetTime">
+            <div class="top-flip"></div>
 
-                </div>
+            <div class="bottom-flip"></div>
 
-                <button id="applyBtn">
+        </div>
 
-                    Apply Countdown
+        <span>Hours</span>
 
-                </button>
+    </div>
 
-            </section>
 
+    <!-- Minutes -->
+
+    <div class="unit">
+
+        <div class="flip-card" data-unit="minutes">
+
+            <div class="top">00</div>
+
+            <div class="bottom">00</div>
+
+            <div class="top-flip"></div>
+
+            <div class="bottom-flip"></div>
+
+        </div>
+
+        <span>Minutes</span>
+
+    </div>
+
+
+    <!-- Seconds -->
+
+    <div class="unit">
+
+        <div class="flip-card" data-unit="seconds">
+
+            <div class="top">00</div>
+
+            <div class="bottom">00</div>
+
+            <div class="top-flip"></div>
+
+            <div class="bottom-flip"></div>
+
+        </div>
+
+        <span>Seconds</span>
+
+    </div>
+
+</section>
             <!-- =========================
                  Event Name
             ========================== -->

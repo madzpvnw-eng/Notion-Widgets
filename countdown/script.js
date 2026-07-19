@@ -1,11 +1,10 @@
-// =========================================
+// ================================
 // Elements
-// =========================================
+// ================================
 
 const eventInput = document.getElementById("eventName");
 const dateInput = document.getElementById("targetDate");
 const timeInput = document.getElementById("targetTime");
-
 const applyBtn = document.getElementById("applyBtn");
 
 const eventTitle = document.getElementById("eventTitle");
@@ -16,52 +15,44 @@ const hours = document.getElementById("hours");
 const minutes = document.getElementById("minutes");
 const seconds = document.getElementById("seconds");
 
-// =========================================
-// Variables
-// =========================================
+let timer;
 
-let countdownInterval = null;
-let targetDate = null;
+// ================================
+// Update Number
+// ================================
 
-// =========================================
-// Helpers
-// =========================================
+function updateCard(element, value){
 
-function pad(number) {
-    return String(number).padStart(2, "0");
-}
+    value = String(value).padStart(2,"0");
 
-function setCountdown(d, h, m, s) {
+    if(element.textContent !== value){
 
-    days.textContent = d;
-    hours.textContent = pad(h);
-    minutes.textContent = pad(m);
-    seconds.textContent = pad(s);
+        // nanti animasi flip ditambahkan di sini
+
+        element.textContent = value;
+
+    }
 
 }
 
-function stopCountdown() {
+// ================================
+// Countdown
+// ================================
 
-    clearInterval(countdownInterval);
-    countdownInterval = null;
-
-}
-
-// =========================================
-// Update Countdown
-// =========================================
-
-function updateCountdown() {
+function updateCountdown(target){
 
     const now = new Date();
 
-    const distance = targetDate - now;
+    const distance = target - now;
 
-    if (distance <= 0) {
+    if(distance <= 0){
 
-        stopCountdown();
+        clearInterval(timer);
 
-        setCountdown("000", 0, 0, 0);
+        updateCard(days,"000");
+        updateCard(hours,0);
+        updateCard(minutes,0);
+        updateCard(seconds,0);
 
         message.textContent = "🎉 Event Started!";
 
@@ -69,68 +60,69 @@ function updateCountdown() {
 
     }
 
-    const totalSeconds = Math.floor(distance / 1000);
+    const total = Math.floor(distance/1000);
 
-    const d = Math.floor(totalSeconds / 86400);
+    const d = Math.floor(total/86400);
 
-    const h = Math.floor((totalSeconds % 86400) / 3600);
+    const h = Math.floor((total%86400)/3600);
 
-    const m = Math.floor((totalSeconds % 3600) / 60);
+    const m = Math.floor((total%3600)/60);
 
-    const s = totalSeconds % 60;
+    const s = total%60;
 
-    setCountdown(d, h, m, s);
+    days.textContent = d;
+
+    updateCard(hours,h);
+    updateCard(minutes,m);
+    updateCard(seconds,s);
 
 }
 
-// =========================================
-// Apply Button
-// =========================================
+// ================================
+// Apply
+// ================================
 
-applyBtn.addEventListener("click", () => {
+applyBtn.addEventListener("click",()=>{
 
-    message.textContent = "";
+    message.textContent="";
 
-    if (eventInput.value.trim() === "") {
+    if(!dateInput.value){
 
-        eventTitle.textContent = "Countdown";
-
-    } else {
-
-        eventTitle.textContent = eventInput.value;
-
-    }
-
-    if (!dateInput.value) {
-
-        message.textContent = "⚠️ Please choose a date.";
+        message.textContent="⚠️ Please choose a date.";
 
         return;
 
     }
 
-    if (!timeInput.value) {
+    if(!timeInput.value){
 
-        message.textContent = "⚠️ Please choose a time.";
-
-        return;
-
-    }
-
-    targetDate = new Date(`${dateInput.value}T${timeInput.value}`);
-
-    if (targetDate <= new Date()) {
-
-        message.textContent = "⚠️ Please select a future date and time.";
+        message.textContent="⚠️ Please choose a time.";
 
         return;
 
     }
 
-    stopCountdown();
+    const target=new Date(`${dateInput.value}T${timeInput.value}`);
 
-    updateCountdown();
+    if(target<=new Date()){
 
-    countdownInterval = setInterval(updateCountdown, 1000);
+        message.textContent="⚠️ Please choose a future date.";
+
+        return;
+
+    }
+
+    eventTitle.textContent=
+    eventInput.value.trim() || "Countdown";
+
+    clearInterval(timer);
+
+    updateCountdown(target);
+
+    timer=setInterval(()=>{
+
+        updateCountdown(target);
+
+    },1000);
 
 });

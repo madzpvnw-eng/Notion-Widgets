@@ -15,15 +15,15 @@
 
 <body>
 
-    <main class="countdown">
+    <main class="container">
 
-        <div class="card">
+        <div class="countdown-card">
 
             <!-- =========================
                  Header
             ========================== -->
 
-            <header>
+            <header class="header">
 
                 <h1>COMING SOON</h1>
 
@@ -33,94 +33,49 @@
                  Controls
             ========================== -->
 
-            <section class="countdown-box">
+            <section class="controls">
 
-    <!-- Days -->
+                <div class="field">
 
-    <div class="unit">
+                    <label for="eventName">📝 Event Name</label>
 
-        <div class="flip-card" data-unit="days">
+                    <input
+                        type="text"
+                        id="eventName"
+                        placeholder="My Birthday">
 
-            <div class="top">000</div>
+                </div>
 
-            <div class="bottom">000</div>
+                <div class="field">
 
-            <div class="top-flip"></div>
+                    <label for="targetDate">📅 Target Date</label>
 
-            <div class="bottom-flip"></div>
+                    <input
+                        type="date"
+                        id="targetDate">
 
-        </div>
+                </div>
 
-        <span>Days</span>
+                <div class="field">
 
-    </div>
+                    <label for="targetTime">🕒 Target Time</label>
 
+                    <input
+                        type="time"
+                        id="targetTime">
 
-    <!-- Hours -->
+                </div>
 
-    <div class="unit">
+                <button id="applyBtn">
 
-        <div class="flip-card" data-unit="hours">
+                    Apply Countdown
 
-            <div class="top">00</div>
+                </button>
 
-            <div class="bottom">00</div>
+            </section>
 
-            <div class="top-flip"></div>
-
-            <div class="bottom-flip"></div>
-
-        </div>
-
-        <span>Hours</span>
-
-    </div>
-
-
-    <!-- Minutes -->
-
-    <div class="unit">
-
-        <div class="flip-card" data-unit="minutes">
-
-            <div class="top">00</div>
-
-            <div class="bottom">00</div>
-
-            <div class="top-flip"></div>
-
-            <div class="bottom-flip"></div>
-
-        </div>
-
-        <span>Minutes</span>
-
-    </div>
-
-
-    <!-- Seconds -->
-
-    <div class="unit">
-
-        <div class="flip-card" data-unit="seconds">
-
-            <div class="top">00</div>
-
-            <div class="bottom">00</div>
-
-            <div class="top-flip"></div>
-
-            <div class="bottom-flip"></div>
-
-        </div>
-
-        <span>Seconds</span>
-
-    </div>
-
-</section>
             <!-- =========================
-                 Event Name
+                 Event Title
             ========================== -->
 
             <h2 id="eventTitle">
@@ -133,25 +88,17 @@
                  Countdown
             ========================== -->
 
-            <section class="countdown-box">
+            <section class="countdown">
 
                 <!-- Days -->
 
                 <div class="unit">
 
-                    <div class="flip-card" id="days-card">
+                    <div class="flip-card" data-unit="days">
 
-                        <div class="top" id="days-top">
+                        <div class="top">000</div>
 
-                            000
-
-                        </div>
-
-                        <div class="bottom" id="days-bottom">
-
-                            000
-
-                        </div>
+                        <div class="bottom">000</div>
 
                         <div class="top-flip"></div>
 
@@ -159,11 +106,7 @@
 
                     </div>
 
-                    <span>
-
-                        Days
-
-                    </span>
+                    <span>Days</span>
 
                 </div>
 
@@ -171,19 +114,11 @@
 
                 <div class="unit">
 
-                    <div class="flip-card" id="hours-card">
+                    <div class="flip-card" data-unit="hours">
 
-                        <div class="top" id="hours-top">
+                        <div class="top">00</div>
 
-                            00
-
-                        </div>
-
-                        <div class="bottom" id="hours-bottom">
-
-                            00
-
-                        </div>
+                        <div class="bottom">00</div>
 
                         <div class="top-flip"></div>
 
@@ -191,11 +126,7 @@
 
                     </div>
 
-                    <span>
-
-                        Hours
-
-                    </span>
+                    <span>Hours</span>
 
                 </div>
 
@@ -203,19 +134,11 @@
 
                 <div class="unit">
 
-                    <div class="flip-card" id="minutes-card">
+                    <div class="flip-card" data-unit="minutes">
 
-                        <div class="top" id="minutes-top">
+                        <div class="top">00</div>
 
-                            00
-
-                        </div>
-
-                        <div class="bottom" id="minutes-bottom">
-
-                            00
-
-                        </div>
+                        <div class="bottom">00</div>
 
                         <div class="top-flip"></div>
 
@@ -223,11 +146,7 @@
 
                     </div>
 
-                    <span>
-
-                        Minutes
-
-                    </span>
+                    <span>Minutes</span>
 
                 </div>
 
@@ -235,19 +154,11 @@
 
                 <div class="unit">
 
-                    <div class="flip-card" id="seconds-card">
+                    <div class="flip-card" data-unit="seconds">
 
-                        <div class="top" id="seconds-top">
+                        <div class="top">00</div>
 
-                            00
-
-                        </div>
-
-                        <div class="bottom" id="seconds-bottom">
-
-                            00
-
-                        </div>
+                        <div class="bottom">00</div>
 
                         <div class="top-flip"></div>
 
@@ -255,18 +166,14 @@
 
                     </div>
 
-                    <span>
-
-                        Seconds
-
-                    </span>
+                    <span>Seconds</span>
 
                 </div>
 
             </section>
 
             <!-- =========================
-                 Message
+                 Footer Message
             ========================== -->
 
             <p id="message"></p>

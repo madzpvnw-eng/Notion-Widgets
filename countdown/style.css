@@ -1,0 +1,277 @@
+/* ===========================
+   Google Font
+=========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
+/* ===========================
+   Reset
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+/* ===========================
+   Body
+=========================== */
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:#ffffff;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    min-height:100vh;
+
+    padding:20px;
+
+}
+
+
+/* ===========================
+   Card
+=========================== */
+
+.card{
+
+    width:100%;
+
+    max-width:500px;
+
+    background:#F5EDE9;
+
+    border-radius:20px;
+
+    padding:35px;
+
+    text-align:center;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+
+}
+
+
+/* ===========================
+   Title
+=========================== */
+
+.card h1{
+
+    color:#703B3B;
+
+    margin-bottom:30px;
+
+    font-size:32px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+}
+
+
+.card h2{
+
+    color:#703B3B;
+
+    margin-top:30px;
+
+    margin-bottom:25px;
+
+    font-size:22px;
+
+    font-weight:600;
+
+}
+
+
+/* ===========================
+   Input
+=========================== */
+
+.input-group{
+
+    text-align:left;
+
+    margin-bottom:20px;
+
+}
+
+.input-group label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    color:#703B3B;
+
+    font-weight:500;
+
+}
+
+.input-group input{
+
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:12px;
+
+    font-size:15px;
+
+    font-family:'Poppins',sans-serif;
+
+    outline:none;
+
+    background:white;
+
+    color:#703B3B;
+
+}
+
+
+/* ===========================
+   Button
+=========================== */
+
+button{
+
+    width:100%;
+
+    padding:15px;
+
+    margin-top:10px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#703B3B;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+button:hover{
+
+    background:#5a2d2d;
+
+}
+
+
+/* ===========================
+   Countdown
+=========================== */
+
+.countdown{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+}
+
+
+/* ===========================
+   Box
+=========================== */
+
+.box{
+
+    width:90px;
+
+}
+
+
+.number{
+
+    background:white;
+
+    border-radius:15px;
+
+    padding:20px 10px;
+
+    font-size:34px;
+
+    font-weight:700;
+
+    color:#703B3B;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+}
+
+
+.box span{
+
+    display:block;
+
+    margin-top:10px;
+
+    color:#703B3B;
+
+    font-size:14px;
+
+    font-weight:500;
+
+}
+
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media(max-width:500px){
+
+    .card{
+
+        padding:25px;
+
+    }
+
+    .box{
+
+        width:70px;
+
+    }
+
+    .number{
+
+        font-size:26px;
+
+        padding:16px 8px;
+
+    }
+
+    .card h1{
+
+        font-size:26px;
+
+    }
+
+}

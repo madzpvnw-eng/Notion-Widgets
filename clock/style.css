@@ -1,1 +1,54 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",sans-serif;
+}
 
+body{
+    background:#ffffff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.clock-card{
+
+    width:330px;
+    padding:35px;
+
+    background:#F5EDE9;
+
+    border-radius:24px;
+
+    text-align:center;
+
+    box-shadow:
+    0 12px 35px rgba(0,0,0,.08);
+
+}
+
+.time{
+
+    color:#703B3B;
+
+    font-size:48px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+}
+
+.date{
+
+    margin-top:15px;
+
+    color:#703B3B;
+
+    font-size:17px;
+
+    opacity:.8;
+
+}

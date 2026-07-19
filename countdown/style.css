@@ -1,12 +1,13 @@
-/* ==========================
+/* =====================================================
    Google Font
-========================== */
+===================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
-/* ==========================
+
+/* =====================================================
    Reset
-========================== */
+===================================================== */
 
 *{
     margin:0;
@@ -14,393 +15,44 @@
     box-sizing:border-box;
 }
 
-/* ==========================
-   Body
-========================== */
+html{
+   /* =====================================================
+   Countdown Layout
+===================================================== */
 
-body{
-
-    font-family:'Poppins',sans-serif;
-
-    background:#ffffff;
+.countdown-box{
 
     display:flex;
-
     justify-content:center;
-
-    align-items:center;
-
-    min-height:100vh;
-
-    padding:25px;
-
-}
-
-/* ==========================
-   Card
-========================== */
-
-.countdown-card{
-
-    width:100%;
-
-    max-width:750px;
-
-    background:#F5EDE9;
-
-    border-radius:28px;
-
-    padding:40px;
-
-    box-shadow:0 20px 45px rgba(0,0,0,.08);
-
-}
-
-/* ==========================
-   Title
-========================== */
-
-.title{
-
-    text-align:center;
-
-    color:#703B3B;
-
-    font-size:46px;
-
-    font-weight:700;
-
-    letter-spacing:3px;
-
-    margin-bottom:35px;
-
-}
-
-/* ==========================
-   Form
-========================== */
-
-.form{
-
-    margin-bottom:35px;
-
-}
-
-.row{
-
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:15px;
-
-}
-
-.input-group{
-
-    margin-bottom:15px;
-
-}
-
-.input-group label{
-
-    display:block;
-
-    margin-bottom:6px;
-
-    color:#703B3B;
-
-    font-size:14px;
-
-    font-weight:500;
-
-}
-
-.input-group input{
-
-    width:100%;
-
-    height:45px;
-
-    padding:0 14px;
-
-    border:none;
-
-    outline:none;
-
-    border-radius:12px;
-
-    background:#fff;
-
-    color:#703B3B;
-
-    font-size:14px;
-
-    font-family:'Poppins',sans-serif;
-
-}
-
-/* ==========================
-   Button
-========================== */
-
-button{
-
-    width:100%;
-
-    height:48px;
-
-    border:none;
-
-    border-radius:14px;
-
-    cursor:pointer;
-
-    background:#703B3B;
-
-    color:#fff;
-
-    font-size:15px;
-
-    font-weight:600;
-
-    transition:.25s;
-
-}
-
-button:hover{
-
-    background:#5d2f2f;
-
-}
-
-/* ==========================
-   Event Name
-========================== */
-
-.event-title{
-
-    text-align:center;
-
-    color:#703B3B;
-
-    font-size:28px;
-
-    font-weight:600;
-
-    margin-bottom:30px;
-
-}
-
-/* ==========================
-   Countdown
-========================== */
-
-.countdown{
-
-    display:flex;
-
-    justify-content:center;
-
-    gap:22px;
+    align-items:flex-start;
+    gap:28px;
 
     flex-wrap:wrap;
 
-}
-
-/* ==========================
-   Time Box
-========================== */
-
-.time-box{
-
-    text-align:center;
+    margin-top:40px;
 
 }
 
-/* ==========================
-   Flip Card
-========================== */
+.unit{
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+   /* =====================================================
+   Hover Effect
+===================================================== */
 
 .flip-card{
 
-    position:relative;
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
 
-    width:120px;
+}
 
-    height:135px;
+.flip-card:hover{
 
-    background:#ffffff;
-
-    border-radius:18px;
+    transform:translateY(-4px);
 
     box-shadow:
-    0 15px 30px rgba(0,0,0,.10);
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    overflow:hidden;
-
-}
-
-/* Garis Tengah */
-
-.flip-card::before{
-
-    content:"";
-
-    position:absolute;
-
-    left:0;
-
-    top:50%;
-
-    width:100%;
-
-    height:2px;
-
-    background:#e5ded9;
-
-}
-
-/* Baut Kiri */
-
-.flip-card::after{
-
-    content:"";
-
-    position:absolute;
-
-    left:-6px;
-
-    top:50%;
-
-    transform:translateY(-50%);
-
-    width:12px;
-
-    height:12px;
-
-    border-radius:50%;
-
-    background:#d6c9c2;
-
-    box-shadow:120px 0 #d6c9c2;
-
-}
-
-/* ==========================
-   Number
-========================== */
-
-.number{
-
-    position:relative;
-
-    z-index:2;
-
-    color:#703B3B;
-
-    font-size:56px;
-
-    font-weight:700;
-
-    line-height:1;
-
-    user-select:none;
-
-}
-
-/* ==========================
-   Label
-========================== */
-
-.label{
-
-    display:block;
-
-    margin-top:14px;
-
-    color:#703B3B;
-
-    font-size:15px;
-
-    font-weight:500;
-
-}
-
-/* ==========================
-   Message
-========================== */
-
-.message{
-
-    margin-top:30px;
-
-    text-align:center;
-
-    color:#703B3B;
-
-    font-size:15px;
-
-    font-weight:500;
-
-    min-height:22px;
-
-}
-
-/* ==========================
-   Responsive
-========================== */
-
-@media(max-width:700px){
-
-    .row{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .countdown{
-
-        gap:15px;
-
-    }
-
-    .flip-card{
-
-        width:95px;
-
-        height:110px;
-
-    }
-
-    .flip-card::after{
-
-        box-shadow:95px 0 #d6c9c2;
-
-    }
-
-    .number{
-
-        font-size:42px;
-
-    }
-
-    .title{
-
-        font-size:34px;
-
-    }
-
-    .event-title{
-
-        font-size:22px;
-
-    }
-
-}
+        0 16px 35

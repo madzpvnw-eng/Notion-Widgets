@@ -265,7 +265,7 @@ body{
 
     align-items:flex-start;
 
-    gap:28px;
+    gap:40px;
 
     flex-wrap:wrap;
 
@@ -307,9 +307,9 @@ body{
 
     position:relative;
 
-    width:130px;
+    width:170px;
 
-    height:150px;
+    height:190px;
 
     perspective:1000px;
 
@@ -342,7 +342,7 @@ body{
 
     color:#703B3B;
 
-    font-size:58px;
+    font-size:72px;
 
     font-weight:700;
 

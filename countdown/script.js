@@ -1,11 +1,6 @@
-/* =====================================================
-   MadWidgets Countdown
-   Part 1 - Countdown Engine
-===================================================== */
-
-// ================================
-// Elements
-// ================================
+/* ======================================================
+   MADWIDGETS COUNTDOWN
+====================================================== */
 
 const eventInput = document.getElementById("eventName");
 const dateInput = document.getElementById("targetDate");
@@ -15,56 +10,110 @@ const applyBtn = document.getElementById("applyBtn");
 const eventTitle = document.getElementById("eventTitle");
 const message = document.getElementById("message");
 
-let countdownDate = null;
-let countdownInterval = null;
+let targetDate = null;
+let timer = null;
 
-
-// ================================
-// Flip Card Elements
-// ================================
+/* ======================================================
+   FLIP CARDS
+====================================================== */
 
 const cards = {};
 
-document.querySelectorAll(".flip-card").forEach(card => {
+document.querySelectorAll(".flip-card").forEach(card=>{
 
     const unit = card.dataset.unit;
 
-    cards[unit] = {
+    cards[unit]={
 
-        element: card,
+        card,
 
-        top: card.querySelector(".top"),
+        top:card.querySelector(".top"),
 
-        bottom: card.querySelector(".bottom"),
+        bottom:card.querySelector(".bottom"),
 
-        topFlip: card.querySelector(".top-flip"),
+        topFlip:card.querySelector(".top-flip"),
 
-        bottomFlip: card.querySelector(".bottom-flip"),
+        bottomFlip:card.querySelector(".bottom-flip"),
 
-        value: null
+        value:null
 
     };
 
 });
 
+/* ======================================================
+   HELPERS
+====================================================== */
 
-// ================================
-// Helper
-// ================================
+function pad(number,length=2){
 
-function pad(value,digits=2){
-
-    return value.toString().padStart(digits,"0");
+    return String(number).padStart(length,"0");
 
 }
 
+/* ======================================================
+   UPDATE
+====================================================== */
 
-// ================================
-// Update Card
-// (sementara tanpa animasi)
-// ================================
+function update(){
+
+    if(!targetDate) return;
+
+    const now = new Date();
+
+    const distance = targetDate-now;
+
+    if(distance<=0){
+
+        clearInterval(timer);
+
+        return;
+
+    }
+
+    const days = Math.floor(distance/(1000*60*60*24));
+
+    const hours = Math.floor(
+
+        (distance%(1000*60*60*24))
+
+        /(1000*60*60)
+
+    );
+
+    const minutes = Math.floor(
+
+        (distance%(1000*60*60))
+
+        /(1000*60)
+
+    );
+
+    const seconds = Math.floor(
+
+        (distance%(1000*60))
+
+        /1000
+
+    );
+
+    updateCard(cards.days,pad(days,3));
+
+    updateCard(cards.hours,pad(hours));
+
+    updateCard(cards.minutes,pad(minutes));
+
+    updateCard(cards.seconds,pad(seconds));
+
+}
+
+/* ======================================================
+   FLIP ANIMATION
+====================================================== */
 
 function updateCard(card,newValue){
+
+    if(!card) return;
 
     if(card.value===newValue){
 
@@ -72,103 +121,49 @@ function updateCard(card,newValue){
 
     }
 
-    const oldValue=card.value ?? newValue;
+    const oldValue = card.value ?? newValue;
 
-    card.topFlip.textContent=oldValue;
-
-    card.bottomFlip.textContent=newValue;
+    card.topFlip.textContent = oldValue;
+    card.bottomFlip.textContent = newValue;
 
     card.topFlip.classList.remove("flip-top");
-
     card.bottomFlip.classList.remove("flip-bottom");
 
+    // Restart animation
     void card.topFlip.offsetWidth;
 
     card.topFlip.classList.add("flip-top");
-
     card.bottomFlip.classList.add("flip-bottom");
 
+    // Setelah animasi selesai
     setTimeout(()=>{
 
-        card.top.textContent=newValue;
+        card.top.textContent = newValue;
+        card.bottom.textContent = newValue;
 
-        card.bottom.textContent=newValue;
+        card.value = newValue;
 
-        card.value=newValue;
+    },350);
 
-    },300);
-
+    // Bersihkan class animasi
     setTimeout(()=>{
 
         card.topFlip.classList.remove("flip-top");
-
         card.bottomFlip.classList.remove("flip-bottom");
 
-    },650);
+    },700);
 
 }
 
-
-// ================================
-// Update Countdown
-// ================================
-
-function updateCountdown(){
-
-    if(!countdownDate) return;
-
-    const now=new Date();
-
-    const distance=countdownDate-now;
-
-    if(distance<=0){
-
-        clearInterval(countdownInterval);
-
-        updateCard(cards.days,"000");
-        updateCard(cards.hours,"00");
-        updateCard(cards.minutes,"00");
-        updateCard(cards.seconds,"00");
-
-        message.textContent="🎉 Event Started!";
-
-        return;
-
-    }
-
-    const days=Math.floor(distance/(1000*60*60*24));
-
-    const hours=Math.floor(
-        (distance%(1000*60*60*24))/
-        (1000*60*60)
-    );
-
-    const minutes=Math.floor(
-        (distance%(1000*60*60))/
-        (1000*60)
-    );
-
-    const seconds=Math.floor(
-        (distance%(1000*60))/1000
-    );
-
-    updateCard(cards.days,pad(days,3));
-    updateCard(cards.hours,pad(hours));
-    updateCard(cards.minutes,pad(minutes));
-    updateCard(cards.seconds,pad(seconds));
-
-}
-
-
-// ================================
-// Apply Button
-// ================================
+/* ======================================================
+   APPLY BUTTON
+====================================================== */
 
 applyBtn.addEventListener("click",()=>{
 
     if(!dateInput.value){
 
-        alert("Please choose a date.");
+        alert("Please select a date.");
 
         return;
 
@@ -176,19 +171,19 @@ applyBtn.addEventListener("click",()=>{
 
     if(!timeInput.value){
 
-        alert("Please choose a time.");
+        alert("Please select a time.");
 
         return;
 
     }
 
-    countdownDate=new Date(
+    targetDate = new Date(
 
         `${dateInput.value}T${timeInput.value}`
 
     );
 
-    if(countdownDate<=new Date()){
+    if(targetDate<=new Date()){
 
         alert("Please choose a future date.");
 
@@ -196,18 +191,90 @@ applyBtn.addEventListener("click",()=>{
 
     }
 
-    eventTitle.textContent=
-
-        eventInput.value.trim() || "Countdown";
+    eventTitle.textContent =
+        eventInput.value.trim() || "🎉 Countdown";
 
     message.textContent="";
 
-    clearInterval(countdownInterval);
+    clearInterval(timer);
 
-    updateCountdown();
+    update();
 
-    countdownInterval=
-
-        setInterval(updateCountdown,1000);
+    timer = setInterval(update,1000);
 
 });
+
+/* ======================================================
+   FINISH
+====================================================== */
+
+function finishCountdown(){
+
+    Object.values(cards).forEach(card=>{
+
+        updateCard(card,"00");
+
+    });
+
+    eventTitle.textContent="🎉 Event Started!";
+
+    message.textContent="Countdown Finished.";
+
+}
+
+/* ======================================================
+   UPDATE OVERRIDE
+====================================================== */
+
+const originalUpdate = update;
+
+update = function(){
+
+    if(!targetDate) return;
+
+    const now = new Date();
+
+    const distance = targetDate-now;
+
+    if(distance<=0){
+
+        clearInterval(timer);
+
+        finishCountdown();
+
+        return;
+
+    }
+
+    const days = Math.floor(distance/(1000*60*60*24));
+
+    const hours = Math.floor(
+
+        (distance%(1000*60*60*24))
+
+        /(1000*60*60)
+
+    );
+
+    const minutes = Math.floor(
+
+        (distance%(1000*60*60))
+
+        /(1000*60)
+
+    );
+
+    const seconds = Math.floor(
+
+        (distance%(1000*60))
+
+        /1000
+
+    );
+
+    updateCard(cards.days,String(days).padStart(3,"0"));
+    updateCard(cards.hours,String(hours).padStart(2,"0"));
+    updateCard(cards.minutes,String(minutes).padStart(2,"0"));
+    updateCard(cards.seconds,String(seconds).padStart(2,"0"));
+
+};

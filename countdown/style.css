@@ -1,13 +1,12 @@
-/* ===========================
+/* ==========================
    Google Font
-=========================== */
+========================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-
-/* ===========================
+/* ==========================
    Reset
-=========================== */
+========================== */
 
 *{
     margin:0;
@@ -15,10 +14,9 @@
     box-sizing:border-box;
 }
 
-
-/* ===========================
+/* ==========================
    Body
-=========================== */
+========================== */
 
 body{
 
@@ -34,77 +32,73 @@ body{
 
     min-height:100vh;
 
-    padding:20px;
+    padding:25px;
 
 }
 
-
-/* ===========================
+/* ==========================
    Card
-=========================== */
+========================== */
 
-.card{
+.countdown-card{
 
     width:100%;
 
-    max-width:500px;
+    max-width:750px;
 
     background:#F5EDE9;
 
-    border-radius:20px;
+    border-radius:28px;
 
-    padding:35px;
+    padding:40px;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.08);
+
+}
+
+/* ==========================
+   Title
+========================== */
+
+.title{
 
     text-align:center;
 
-    box-shadow:0 15px 40px rgba(0,0,0,.08);
-
-}
-
-
-/* ===========================
-   Title
-=========================== */
-
-.card h1{
-
     color:#703B3B;
 
-    margin-bottom:30px;
-
-    font-size:32px;
+    font-size:46px;
 
     font-weight:700;
 
-    letter-spacing:2px;
+    letter-spacing:3px;
+
+    margin-bottom:35px;
 
 }
 
+/* ==========================
+   Form
+========================== */
 
-.card h2{
+.form{
 
-    color:#703B3B;
-
-    margin-top:30px;
-
-    margin-bottom:25px;
-
-    font-size:22px;
-
-    font-weight:600;
+    margin-bottom:35px;
 
 }
 
+.row{
 
-/* ===========================
-   Input
-=========================== */
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:15px;
+
+}
 
 .input-group{
 
-    text-align:left;
-
-    margin-bottom:20px;
+    margin-bottom:15px;
 
 }
 
@@ -112,126 +106,7 @@ body{
 
     display:block;
 
-    margin-bottom:8px;
-
-    color:#703B3B;
-
-    font-weight:500;
-
-}
-
-.input-group input{
-
-    width:100%;
-
-    padding:14px;
-
-    border:none;
-
-    border-radius:12px;
-
-    font-size:15px;
-
-    font-family:'Poppins',sans-serif;
-
-    outline:none;
-
-    background:white;
-
-    color:#703B3B;
-
-}
-
-
-/* ===========================
-   Button
-=========================== */
-
-button{
-
-    width:100%;
-
-    padding:15px;
-
-    margin-top:10px;
-
-    border:none;
-
-    border-radius:12px;
-
-    background:#703B3B;
-
-    color:white;
-
-    font-size:16px;
-
-    font-weight:600;
-
-    cursor:pointer;
-
-    transition:.3s;
-
-}
-
-button:hover{
-
-    background:#5a2d2d;
-
-}
-
-
-/* ===========================
-   Countdown
-=========================== */
-
-.countdown{
-
-    display:flex;
-
-    justify-content:center;
-
-    gap:15px;
-
-    flex-wrap:wrap;
-
-}
-
-
-/* ===========================
-   Box
-=========================== */
-
-.box{
-
-    width:90px;
-
-}
-
-
-.number{
-
-    background:white;
-
-    border-radius:15px;
-
-    padding:20px 10px;
-
-    font-size:34px;
-
-    font-weight:700;
-
-    color:#703B3B;
-
-    box-shadow:0 8px 20px rgba(0,0,0,.08);
-
-}
-
-
-.box span{
-
-    display:block;
-
-    margin-top:10px;
+    margin-bottom:6px;
 
     color:#703B3B;
 
@@ -241,36 +116,290 @@ button:hover{
 
 }
 
+.input-group input{
 
-/* ===========================
+    width:100%;
+
+    height:45px;
+
+    padding:0 14px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:12px;
+
+    background:#fff;
+
+    color:#703B3B;
+
+    font-size:14px;
+
+    font-family:'Poppins',sans-serif;
+
+}
+
+/* ==========================
+   Button
+========================== */
+
+button{
+
+    width:100%;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    background:#703B3B;
+
+    color:#fff;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    transition:.25s;
+
+}
+
+button:hover{
+
+    background:#5d2f2f;
+
+}
+
+/* ==========================
+   Event Name
+========================== */
+
+.event-title{
+
+    text-align:center;
+
+    color:#703B3B;
+
+    font-size:28px;
+
+    font-weight:600;
+
+    margin-bottom:30px;
+
+}
+
+/* ==========================
+   Countdown
+========================== */
+
+.countdown{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:22px;
+
+    flex-wrap:wrap;
+
+}
+
+/* ==========================
+   Time Box
+========================== */
+
+.time-box{
+
+    text-align:center;
+
+}
+
+/* ==========================
+   Flip Card
+========================== */
+
+.flip-card{
+
+    position:relative;
+
+    width:120px;
+
+    height:135px;
+
+    background:#ffffff;
+
+    border-radius:18px;
+
+    box-shadow:
+    0 15px 30px rgba(0,0,0,.10);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+}
+
+/* Garis Tengah */
+
+.flip-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:50%;
+
+    width:100%;
+
+    height:2px;
+
+    background:#e5ded9;
+
+}
+
+/* Baut Kiri */
+
+.flip-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:-6px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:12px;
+
+    height:12px;
+
+    border-radius:50%;
+
+    background:#d6c9c2;
+
+    box-shadow:120px 0 #d6c9c2;
+
+}
+
+/* ==========================
+   Number
+========================== */
+
+.number{
+
+    position:relative;
+
+    z-index:2;
+
+    color:#703B3B;
+
+    font-size:56px;
+
+    font-weight:700;
+
+    line-height:1;
+
+    user-select:none;
+
+}
+
+/* ==========================
+   Label
+========================== */
+
+.label{
+
+    display:block;
+
+    margin-top:14px;
+
+    color:#703B3B;
+
+    font-size:15px;
+
+    font-weight:500;
+
+}
+
+/* ==========================
+   Message
+========================== */
+
+.message{
+
+    margin-top:30px;
+
+    text-align:center;
+
+    color:#703B3B;
+
+    font-size:15px;
+
+    font-weight:500;
+
+    min-height:22px;
+
+}
+
+/* ==========================
    Responsive
-=========================== */
+========================== */
 
-@media(max-width:500px){
+@media(max-width:700px){
 
-    .card{
+    .row{
 
-        padding:25px;
+        grid-template-columns:1fr;
 
     }
 
-    .box{
+    .countdown{
 
-        width:70px;
+        gap:15px;
+
+    }
+
+    .flip-card{
+
+        width:95px;
+
+        height:110px;
+
+    }
+
+    .flip-card::after{
+
+        box-shadow:95px 0 #d6c9c2;
 
     }
 
     .number{
 
-        font-size:26px;
-
-        padding:16px 8px;
+        font-size:42px;
 
     }
 
-    .card h1{
+    .title{
 
-        font-size:26px;
+        font-size:34px;
+
+    }
+
+    .event-title{
+
+        font-size:22px;
 
     }
 

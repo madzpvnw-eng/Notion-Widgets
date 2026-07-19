@@ -123,7 +123,7 @@ function updateCard(card,newValue){
 
     const oldValue = card.value ?? newValue;
 
-    card.topFlip.textContent = oldValue;
+    card.topFlip.textContent = "";
     card.bottomFlip.textContent = newValue;
 
     card.topFlip.classList.remove("flip-top");

@@ -23,37 +23,29 @@ let countdownInterval = null;
 // Flip Card Elements
 // ================================
 
-const cards = {
+const cards = {};
 
-    days:{
+document.querySelectorAll(".flip-card").forEach(card => {
 
-        top:document.getElementById("days-top"),
-        bottom:document.getElementById("days-bottom")
+    const unit = card.dataset.unit;
 
-    },
+    cards[unit] = {
 
-    hours:{
+        element: card,
 
-        top:document.getElementById("hours-top"),
-        bottom:document.getElementById("hours-bottom")
+        top: card.querySelector(".top"),
 
-    },
+        bottom: card.querySelector(".bottom"),
 
-    minutes:{
+        topFlip: card.querySelector(".top-flip"),
 
-        top:document.getElementById("minutes-top"),
-        bottom:document.getElementById("minutes-bottom")
+        bottomFlip: card.querySelector(".bottom-flip"),
 
-    },
+        value: null
 
-    seconds:{
+    };
 
-        top:document.getElementById("seconds-top"),
-        bottom:document.getElementById("seconds-bottom")
-
-    }
-
-};
+});
 
 
 // ================================
@@ -72,10 +64,47 @@ function pad(value,digits=2){
 // (sementara tanpa animasi)
 // ================================
 
-function updateCard(card,value){
+function updateCard(card,newValue){
 
-    card.top.textContent=value;
-    card.bottom.textContent=value;
+    if(card.value===newValue){
+
+        return;
+
+    }
+
+    const oldValue=card.value ?? newValue;
+
+    card.topFlip.textContent=oldValue;
+
+    card.bottomFlip.textContent=newValue;
+
+    card.topFlip.classList.remove("flip-top");
+
+    card.bottomFlip.classList.remove("flip-bottom");
+
+    void card.topFlip.offsetWidth;
+
+    card.topFlip.classList.add("flip-top");
+
+    card.bottomFlip.classList.add("flip-bottom");
+
+    setTimeout(()=>{
+
+        card.top.textContent=newValue;
+
+        card.bottom.textContent=newValue;
+
+        card.value=newValue;
+
+    },300);
+
+    setTimeout(()=>{
+
+        card.topFlip.classList.remove("flip-top");
+
+        card.bottomFlip.classList.remove("flip-bottom");
+
+    },650);
 
 }
 

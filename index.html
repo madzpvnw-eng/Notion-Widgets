@@ -1,26 +1,451 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="MUADZ — Creative Designer, Web Learner & Content Creator">
+<title>MUADZ — Creative Portfolio</title>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
-    <title>Notion Widgets</title>
+:root{
+  --bg:#07080d;
+  --surface:#0d1018;
+  --surface-2:#121620;
+  --text:#f4f0ea;
+  --muted:#9699a6;
+  --line:rgba(255,255,255,.09);
+  --accent:#e96f8a;
+  --accent-2:#9f7aea;
+  --glow:rgba(233,111,138,.22);
+  --radius:22px;
+  --max:1200px;
+}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:
+    radial-gradient(circle at 15% 5%,rgba(159,122,234,.13),transparent 28%),
+    radial-gradient(circle at 85% 30%,rgba(233,111,138,.10),transparent 30%),
+    var(--bg);
+  color:var(--text);
+  font-family:"DM Sans",sans-serif;
+  overflow-x:hidden;
+}
+body.light{
+  --bg:#f4f1ed;--surface:#fff;--surface-2:#ebe7e3;
+  --text:#17151a;--muted:#6e6870;--line:rgba(0,0,0,.10);
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+img{max-width:100%;display:block}
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+.cursor-glow{
+  position:fixed;width:280px;height:280px;border-radius:50%;
+  pointer-events:none;z-index:-1;
+  background:radial-gradient(circle,var(--glow),transparent 68%);
+  transform:translate(-50%,-50%);
+  transition:opacity .25s;
+}
+.noise{
+  position:fixed;inset:0;pointer-events:none;z-index:99;opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+}
+.container{width:min(var(--max),calc(100% - 48px));margin:auto}
+section{padding:110px 0;position:relative}
+.section-kicker{
+  color:var(--accent);font-size:12px;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;margin-bottom:12px;
+}
+.section-title{
+  font-family:"Space Grotesk";font-size:clamp(32px,5vw,58px);
+  line-height:1.02;letter-spacing:-.045em;
+}
+.section-desc{color:var(--muted);max-width:560px;line-height:1.8;margin-top:16px}
+.reveal{opacity:0;transform:translateY(35px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:none}
 
-    <link rel="stylesheet" href="style.css">
+/* NAV */
+.nav{
+  position:fixed;top:16px;left:50%;transform:translateX(-50%);
+  width:min(1100px,calc(100% - 32px));height:62px;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 14px 0 20px;border:1px solid var(--line);
+  background:rgba(8,10,16,.68);backdrop-filter:blur(18px);
+  border-radius:18px;box-shadow:0 15px 50px rgba(0,0,0,.18);
+}
+body.light .nav{background:rgba(255,255,255,.75)}
+.brand{font-family:"Space Grotesk";font-weight:700;letter-spacing:-.03em}
+.brand span{color:var(--accent)}
+.nav-links{display:flex;gap:26px;font-size:13px;color:var(--muted)}
+.nav-links a{position:relative;padding:22px 0}
+.nav-links a:after{content:"";position:absolute;left:0;bottom:13px;width:0;height:2px;background:var(--accent);transition:.25s}
+.nav-links a:hover:after,.nav-links a.active:after{width:100%}
+.nav-actions{display:flex;gap:8px}
+.icon-btn{
+  width:36px;height:36px;border:1px solid var(--line);border-radius:11px;
+  background:var(--surface);display:grid;place-items:center;cursor:pointer;
+}
+.menu{display:none}
 
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:130px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:70px}
+.eyebrow{
+  display:inline-flex;gap:8px;align-items:center;padding:8px 12px;
+  border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:12px;
+  background:rgba(255,255,255,.025);margin-bottom:25px;
+}
+.dot{width:7px;height:7px;border-radius:50%;background:#62d59b;box-shadow:0 0 12px #62d59b}
+.hero h1{
+  font-family:"Space Grotesk";font-size:clamp(60px,9vw,120px);line-height:.87;
+  letter-spacing:-.07em;max-width:800px;
+}
+.hero h1 .outline{
+  color:transparent;-webkit-text-stroke:1px var(--text);
+}
+.hero h1 .pink{color:var(--accent)}
+.hero-copy{font-size:16px;color:var(--muted);max-width:580px;line-height:1.8;margin:27px 0}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;padding:13px 18px;
+  border-radius:12px;border:1px solid var(--line);background:var(--surface);
+  transition:.25s;font-size:13px;font-weight:600;
+}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:white;box-shadow:0 10px 30px var(--glow)}
+.btn:hover{transform:translateY(-3px);border-color:var(--accent)}
+.hero-meta{display:flex;gap:28px;margin-top:45px;color:var(--muted);font-size:12px}
+.hero-meta strong{display:block;color:var(--text);font-size:20px;margin-bottom:4px}
+.hero-visual{position:relative;min-height:570px}
+.orbit{
+  position:absolute;inset:5% 4%;border:1px solid var(--line);border-radius:45%;
+  transform:rotate(-12deg);
+}
+.orbit:before,.orbit:after{
+  content:"";position:absolute;border:1px solid rgba(233,111,138,.35);border-radius:50%;
+}
+.orbit:before{inset:13% -4%;transform:rotate(25deg)}
+.orbit:after{inset:-4% 14%;transform:rotate(-17deg)}
+.hero-card{
+  position:absolute;inset:11% 12%;border:1px solid rgba(255,255,255,.13);
+  border-radius:28px;overflow:hidden;background:var(--surface);
+  box-shadow:0 35px 80px rgba(0,0,0,.42);transform:rotate(3deg);
+}
+.hero-card img{width:100%;height:100%;object-fit:cover;filter:saturate(.75) contrast(1.04)}
+.hero-card:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(5,6,10,.82))}
+.hero-card-label{position:absolute;z-index:2;left:24px;bottom:24px}
+.hero-card-label small{color:#ddd;font-size:11px;letter-spacing:.14em}
+.hero-card-label h3{font-family:"Space Grotesk";font-size:28px;margin-top:5px}
+.float{
+  position:absolute;padding:12px 15px;border:1px solid var(--line);
+  border-radius:14px;background:rgba(10,12,18,.75);backdrop-filter:blur(14px);
+  font-size:11px;color:var(--muted);animation:float 5s ease-in-out infinite;
+}
+.float b{color:var(--text);display:block;font-size:14px;margin-top:3px}
+.f1{right:0;top:15%;}.f2{left:0;bottom:18%;animation-delay:-2s}.f3{right:8%;bottom:4%;animation-delay:-3.5s}
+@keyframes float{50%{transform:translateY(-13px)}}
+
+/* MARQUEE */
+.marquee{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:17px 0;white-space:nowrap}
+.marquee-track{display:inline-flex;gap:30px;animation:marquee 24s linear infinite}
+.marquee span{font-family:"Space Grotesk";font-size:13px;letter-spacing:.15em;color:var(--muted)}
+.marquee i{color:var(--accent);font-style:normal}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:80px;align-items:start}
+.about-photo{position:relative;aspect-ratio:4/5;border-radius:25px;overflow:hidden;border:1px solid var(--line);background:var(--surface)}
+.about-photo img{width:100%;height:100%;object-fit:cover;filter:saturate(.75)}
+.about-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(7,8,13,.7))}
+.photo-tag{position:absolute;z-index:2;left:18px;bottom:18px;border:1px solid var(--line);background:rgba(0,0,0,.35);backdrop-filter:blur(10px);padding:10px 13px;border-radius:10px;font-size:11px}
+.info-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:32px}
+.info{
+  padding:18px;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.018)
+}
+.info small{color:var(--muted);font-size:11px}.info strong{display:block;margin-top:7px;font-size:14px}
+.about-text{color:var(--muted);line-height:1.9;margin-top:22px}
+
+/* SKILLS */
+.skills-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.skill-list{display:grid;gap:18px;margin-top:32px}
+.skill-row{display:grid;grid-template-columns:120px 1fr 40px;gap:15px;align-items:center;font-size:13px}
+.skill-bar{height:6px;background:var(--surface-2);border-radius:99px;overflow:hidden}
+.skill-bar i{display:block;width:0;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--accent),var(--accent-2));transition:width 1.3s cubic-bezier(.2,.8,.2,1)}
+.skill-row.animated .skill-bar i{width:var(--value)}
+.skill-ring{width:min(360px,75vw);aspect-ratio:1;border:1px solid var(--line);border-radius:50%;margin:auto;display:grid;place-items:center;position:relative}
+.skill-ring:before{content:"";position:absolute;inset:13%;border:1px dashed rgba(233,111,138,.4);border-radius:50%;animation:spin 18s linear infinite}
+.skill-ring:after{content:"";position:absolute;inset:27%;border:1px solid var(--line);border-radius:50%}
+.skill-core{text-align:center;z-index:2}
+.skill-core b{font-family:"Space Grotesk";font-size:48px;display:block}
+.skill-core span{font-size:11px;color:var(--muted);letter-spacing:.16em}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* PROJECTS */
+.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:45px}
+.project{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--surface);transition:.35s}
+.project:hover{transform:translateY(-8px);border-color:rgba(233,111,138,.55);box-shadow:0 25px 60px rgba(0,0,0,.22)}
+.project-img{height:230px;position:relative;overflow:hidden}
+.project-img img{width:100%;height:100%;object-fit:cover;filter:saturate(.75);transition:.5s}
+.project:hover .project-img img{transform:scale(1.06)}
+.project-num{position:absolute;top:13px;left:13px;padding:7px 10px;border:1px solid rgba(255,255,255,.2);border-radius:8px;background:rgba(0,0,0,.45);font-size:10px}
+.project-body{padding:21px}
+.project h3{font-family:"Space Grotesk";font-size:20px}
+.project p{color:var(--muted);font-size:13px;line-height:1.7;margin:10px 0 17px}
+.tags{display:flex;gap:7px;flex-wrap:wrap}
+.tag{padding:6px 9px;border:1px solid var(--line);border-radius:7px;font-size:10px;color:var(--muted)}
+.project-link{display:inline-block;margin-top:20px;color:var(--accent);font-size:12px;font-weight:700}
+
+/* EXPERIENCE */
+.experience{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.timeline{margin-top:45px;position:relative}
+.timeline:before{content:"";position:absolute;left:9px;top:0;bottom:0;width:1px;background:var(--line)}
+.timeline-item{position:relative;padding:0 0 45px 45px}
+.timeline-dot{position:absolute;left:4px;top:3px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--accent);box-shadow:0 0 0 5px var(--bg)}
+.timeline-date{font-size:11px;color:var(--accent);letter-spacing:.1em}
+.timeline h3{font-family:"Space Grotesk";font-size:21px;margin:7px 0}
+.timeline p{color:var(--muted);font-size:13px;line-height:1.7;max-width:650px}
+
+/* CONTACT */
+.contact-box{
+  border:1px solid var(--line);border-radius:28px;padding:65px;
+  background:
+    radial-gradient(circle at 80% 20%,rgba(233,111,138,.16),transparent 28%),
+    radial-gradient(circle at 10% 80%,rgba(159,122,234,.13),transparent 30%),
+    var(--surface);
+  position:relative;overflow:hidden;
+}
+.contact-box:after{content:"";position:absolute;width:300px;height:300px;border:1px solid rgba(233,111,138,.16);border-radius:50%;right:-90px;bottom:-130px}
+.contact-box h2{max-width:700px}
+.contact-flex{display:flex;justify-content:space-between;gap:40px;align-items:end;margin-top:35px}
+.socials{display:flex;gap:9px;flex-wrap:wrap}
+.social{padding:11px 15px;border:1px solid var(--line);border-radius:10px;font-size:12px;transition:.2s}
+.social:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+footer{padding:30px 0 45px;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:20px}
+
+/* RESPONSIVE */
+@media(max-width:950px){
+  .nav-links{display:none}.menu{display:grid}.hero-grid,.about-grid,.skills-layout{grid-template-columns:1fr;gap:45px}
+  .hero{padding-top:125px}.hero-visual{min-height:520px}.project-grid{grid-template-columns:1fr 1fr}
+  .about-photo{max-width:480px}.contact-flex{align-items:start;flex-direction:column}
+}
+@media(max-width:650px){
+  .container{width:min(100% - 30px,1200px)}
+  section{padding:80px 0}.hero h1{font-size:62px}.hero-visual{min-height:430px}
+  .hero-card{inset:8% 7%}.float{display:none}.hero-meta{gap:18px}
+  .project-grid{grid-template-columns:1fr}.info-grid{grid-template-columns:1fr}
+  .skill-row{grid-template-columns:85px 1fr 30px;font-size:11px}
+  .contact-box{padding:35px 22px}footer{flex-direction:column}
+}
+</style>
 </head>
+
 <body>
+<div class="noise"></div>
+<div class="cursor-glow" id="cursorGlow"></div>
 
-    <div id="app"></div>
+<header class="nav">
+  <a class="brand" href="#home">MUADZ<span>.</span>exe</a>
+  <nav class="nav-links">
+    <a class="active" href="#home">HOME</a>
+    <a href="#about">ABOUT</a>
+    <a href="#skills">SKILLS</a>
+    <a href="#projects">PROJECTS</a>
+    <a href="#experience">EXPERIENCE</a>
+    <a href="#contact">CONTACT</a>
+  </nav>
+  <div class="nav-actions">
+    <button class="icon-btn" id="themeBtn" aria-label="Ganti tema">☼</button>
+    <button class="icon-btn menu" id="menuBtn" aria-label="Menu">☰</button>
+  </div>
+</header>
 
-    <script src="widgets.js"></script>
-    <script src="script.js"></script>
+<main>
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div class="reveal">
+      <div class="eyebrow"><span class="dot"></span> AVAILABLE FOR CREATIVE PROJECTS</div>
+      <h1>MAKE <span class="outline">IDEAS</span><br><span class="pink">VISIBLE.</span></h1>
+      <p class="hero-copy">I’m Muadz — a creative learner who turns ideas into visual experiences through design, web, content, and continuous learning.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#projects">Explore my work ↗</a>
+        <a class="btn" href="#contact">Let's talk</a>
+      </div>
+      <div class="hero-meta">
+        <div><strong>04+</strong>creative areas</div>
+        <div><strong>10+</strong>projects & experiments</div>
+        <div><strong>∞</strong>things to learn</div>
+      </div>
+    </div>
 
+    <div class="hero-visual reveal">
+      <div class="orbit"></div>
+      <div class="hero-card">
+        <img src="assets/portfolio-reference.png" alt="Portfolio visual">
+        <div class="hero-card-label"><small>CREATIVE LEARNER</small><h3>MUADZ</h3></div>
+      </div>
+      <div class="float f1">DESIGN <b>75%</b></div>
+      <div class="float f2">WEB <b>60%</b></div>
+      <div class="float f3">LEARNING <b>85%</b></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>DESIGN <i>✦</i></span><span>WEB DEVELOPMENT <i>✦</i></span><span>CONTENT <i>✦</i></span><span>VIDEO <i>✦</i></span><span>LEARNING <i>✦</i></span>
+    <span>DESIGN <i>✦</i></span><span>WEB DEVELOPMENT <i>✦</i></span><span>CONTENT <i>✦</i></span><span>VIDEO <i>✦</i></span><span>LEARNING <i>✦</i></span>
+  </div>
+</div>
+
+<section id="about">
+  <div class="container about-grid">
+    <div class="about-photo reveal">
+      <img src="assets/portfolio-reference.png" alt="About Muadz">
+      <div class="photo-tag">01 / ABOUT ME</div>
+    </div>
+    <div class="reveal">
+      <div class="section-kicker">A little about me</div>
+      <h2 class="section-title">Curious by nature.<br>Creative by practice.</h2>
+      <p class="about-text">I enjoy learning how ideas become something people can see, use, and remember. My current journey sits between visual design, simple web development, content creation, and documentation.</p>
+      <p class="about-text">I’m still learning — and that’s exactly what makes the process exciting.</p>
+      <div class="info-grid">
+        <div class="info"><small>NAME</small><strong>Muadz</strong></div>
+        <div class="info"><small>ROLE</small><strong>Creative Learner</strong></div>
+        <div class="info"><small>FOCUS</small><strong>Design + Web</strong></div>
+        <div class="info"><small>BASED IN</small><strong>Indonesia</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container skills-layout">
+    <div class="reveal">
+      <div class="section-kicker">What I can do</div>
+      <h2 class="section-title">Skills that are<br>still growing.</h2>
+      <p class="section-desc">These percentages are not a measurement of perfection. They simply show where I currently feel most comfortable.</p>
+      <div class="skill-list">
+        <div class="skill-row" style="--value:75%"><span>Design</span><div class="skill-bar"><i></i></div><b>75</b></div>
+        <div class="skill-row" style="--value:60%"><span>Web</span><div class="skill-bar"><i></i></div><b>60</b></div>
+        <div class="skill-row" style="--value:70%"><span>Video</span><div class="skill-bar"><i></i></div><b>70</b></div>
+        <div class="skill-row" style="--value:80%"><span>Content</span><div class="skill-bar"><i></i></div><b>80</b></div>
+        <div class="skill-row" style="--value:85%"><span>Learning</span><div class="skill-bar"><i></i></div><b>85</b></div>
+      </div>
+    </div>
+    <div class="skill-ring reveal">
+      <div class="skill-core"><b>∞</b><span>KEEP LEARNING</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-kicker">Selected work</div>
+      <h2 class="section-title">Things I’ve built,<br>designed & explored.</h2>
+      <p class="section-desc">Replace these cards with your real projects. You only need to edit the title, description, image and link.</p>
+    </div>
+    <div class="project-grid">
+      <article class="project reveal">
+        <div class="project-img"><img src="assets/portfolio-reference.png" alt="Masjid Al-Fath"><span class="project-num">01</span></div>
+        <div class="project-body"><h3>Masjid Al-Fath</h3><p>Visual content, posters, social media and documentation for meaningful activities.</p><div class="tags"><span class="tag">DESIGN</span><span class="tag">SOCIAL MEDIA</span></div><a class="project-link" href="#">View project ↗</a></div>
+      </article>
+      <article class="project reveal">
+        <div class="project-img"><img src="assets/portfolio-reference.png" alt="Notion Widgets"><span class="project-num">02</span></div>
+        <div class="project-body"><h3>Notion Widgets</h3><p>Small HTML/CSS experiments designed to make digital workspaces feel more personal.</p><div class="tags"><span class="tag">HTML</span><span class="tag">UI</span></div><a class="project-link" href="#">View project ↗</a></div>
+      </article>
+      <article class="project reveal">
+        <div class="project-img"><img src="assets/portfolio-reference.png" alt="Personal Experiments"><span class="project-num">03</span></div>
+        <div class="project-body"><h3>Personal Experiments</h3><p>A collection of small ideas, designs, websites and things I made while learning.</p><div class="tags"><span class="tag">EXPERIMENTAL</span><span class="tag">CREATIVE</span></div><a class="project-link" href="#">View project ↗</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="experience" id="experience">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-kicker">The journey</div>
+      <h2 class="section-title">Still becoming.</h2>
+      <p class="section-desc">A simple timeline you can replace with your real experience, organization work, freelance projects or learning milestones.</p>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item reveal"><span class="timeline-dot"></span><div class="timeline-date">2026 — NOW</div><h3>Creative Learning Journey</h3><p>Exploring design, web development, content creation and building a stronger portfolio.</p></div>
+      <div class="timeline-item reveal"><span class="timeline-dot"></span><div class="timeline-date">2025 — 2026</div><h3>Design & Content Work</h3><p>Creating visual materials, social media content, documentation and supporting digital activities.</p></div>
+      <div class="timeline-item reveal"><span class="timeline-dot"></span><div class="timeline-date">THE BEGINNING</div><h3>Curiosity → Practice</h3><p>Started learning by making things, breaking things, searching, trying again, and slowly improving.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="contact-box reveal">
+      <div class="section-kicker">Have an idea?</div>
+      <h2 class="section-title">Let’s make something<br><span style="color:var(--accent)">worth remembering.</span></h2>
+      <div class="contact-flex">
+        <p class="section-desc" style="margin:0">Open to creative collaborations, design work, content projects and interesting experiments.</p>
+        <div class="socials">
+          <a class="social" href="mailto:hello@example.com">Email</a>
+          <a class="social" href="https://instagram.com/" target="_blank">Instagram</a>
+          <a class="social" href="https://github.com/" target="_blank">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="container">
+  <span>© 2026 MUADZ.exe</span>
+  <span>Designed & built with curiosity ✦</span>
+</footer>
+
+<script>
+const body=document.body;
+const themeBtn=document.getElementById('themeBtn');
+const glow=document.getElementById('cursorGlow');
+
+themeBtn.addEventListener('click',()=>{
+  body.classList.toggle('light');
+  themeBtn.textContent=body.classList.contains('light')?'☾':'☼';
+  localStorage.setItem('theme',body.classList.contains('light')?'light':'dark');
+});
+if(localStorage.getItem('theme')==='light'){body.classList.add('light');themeBtn.textContent='☾'}
+
+window.addEventListener('pointermove',e=>{
+  glow.style.left=e.clientX+'px'; glow.style.top=e.clientY+'px';
+});
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      entry.target.querySelectorAll?.('.skill-row').forEach(x=>x.classList.add('animated'));
+      if(entry.target.classList.contains('skill-list')){
+        entry.target.querySelectorAll('.skill-row').forEach(x=>x.classList.add('animated'));
+      }
+    }
+  });
+},{threshold:.12});
+
+document.querySelectorAll('.reveal,.skill-row').forEach(el=>observer.observe(el));
+
+const links=[...document.querySelectorAll('.nav-links a')];
+const sections=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{
+  let current='home';
+  sections.forEach(sec=>{if(scrollY>=sec.offsetTop-180) current=sec.id});
+  links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+current));
+},{passive:true});
+
+const menuBtn=document.getElementById('menuBtn');
+menuBtn?.addEventListener('click',()=>{
+  const nav=document.querySelector('.nav-links');
+  const open=nav.style.display==='flex';
+  nav.style.cssText=open?'':'display:flex;position:absolute;top:68px;left:0;right:0;flex-direction:column;gap:0;padding:10px 20px;background:var(--surface);border:1px solid var(--line);border-radius:15px';
+});
+</script>
 </body>
 </html>
